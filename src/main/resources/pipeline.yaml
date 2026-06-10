@@ -17,10 +17,10 @@ modules:
       type: POLL
       id: boe-crawler
       source:
-        type: HTTP
+        type: BOE_HTTP
         configuration:
-          sourceId: boe
-          url: "https://boe.es/datosabiertos/api/boe/sumario/20260601"
+          sourceId: BOE-Api
+          url: "https://boe.es/datosabiertos/api/boe/sumario"
           scheduleMilliseconds: 0
         rootPath: data.sumario.diario.0.items
         mediaType: BOE_JSON_ARRAY
@@ -36,6 +36,6 @@ modules:
   - janitor:
       id: boe-janitor
       configuration:
-        milliseconds: 1000
+        milliseconds: 5000
         millisecondsThreshold: 10000
-        millisecondsTTL: 100000
+        millisecondsTTL: 15000

@@ -1,6 +1,8 @@
 package software.examples.spool.boe.plugins;
 
+import software.spool.core.adapter.logging.LoggerFactory;
 import software.spool.core.exception.SpoolException;
+import software.spool.core.port.logging.Logger;
 import software.spool.crawler.api.port.source.PollSource;
 
 import java.net.URI;
@@ -12,6 +14,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class BOEHTTPPollSource implements PollSource<byte[]> {
+    private static final Logger LOG = LoggerFactory.getLogger(BOEHTTPPollSource.class);
     private final HttpClient httpClient;
     private final String url;
     private final String sourceId;
@@ -27,6 +30,7 @@ public class BOEHTTPPollSource implements PollSource<byte[]> {
     @Override
     public byte[] fetch() throws SpoolException {
         try {
+            LOG.info("Polling BOE API at {}", url);
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
                     .timeout(Duration.ofSeconds(10))
