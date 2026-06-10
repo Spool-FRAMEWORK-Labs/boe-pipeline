@@ -18,7 +18,7 @@ This example demonstrates how to use Spool to build a complete pipeline that:
 
 ## Pipeline architecture
 
-The entire pipeline is declared in a single YAML file (`pipeline-boe.yaml`):
+The entire pipeline is declared in a single YAML file (`pipeline.yaml`):
 
 ```yaml
 modules:
@@ -135,7 +135,7 @@ boe-pipeline/
 |-------|----------------|
 | Java  | 21             |
 | Maven | 3.8+           |
-| Spool | 1.0.0-SNAPSHOT |
+| Spool | 1.1.2          |
 
 ---
 
@@ -157,7 +157,7 @@ The pipeline will start, fetch today's BOE summary, and store each item as an ev
 
 ### 3. Configure paths
 
-Edit `src/main/resources/pipeline-boe.yaml` to change the inbox and data lake locations:
+Edit `src/main/resources/pipeline.yaml` to change the inbox and data lake locations:
 
 ```yaml
 infrastructure:
